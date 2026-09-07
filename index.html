@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A modern AI chat app powered by Puter.js">
+  <title>Puter AI Chat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div>
+          <div class="brand-title">Puter Chat</div>
+          <div class="brand-subtitle">AI workspace</div>
+        </div>
+      </div>
+
+      <button id="newChatBtn" class="new-chat">＋ New chat</button>
+
+      <div class="sidebar-section">
+        <div class="section-label">Settings</div>
+        <label class="field">
+          <span>Model</span>
+          <select id="modelSelect">
+            <option value="gpt-5.6-luna">GPT-5.6 Luna</option>
+            <option value="gpt-5-nano">GPT-5 Nano</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Temperature <b id="tempValue">0.7</b></span>
+          <input id="temperature" type="range" min="0" max="2" step="0.1" value="0.7">
+        </label>
+
+        <label class="field check">
+          <input id="webSearch" type="checkbox">
+          <span>Enable web search</span>
+        </label>
+      </div>
+
+      <div class="sidebar-bottom">
+        <button id="loadModelsBtn" class="secondary-btn">↻ Refresh models</button>
+        <button id="clearBtn" class="secondary-btn danger">Clear local chat</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="topbar-title">AI Chat</div>
+          <div id="status" class="status">Ready</div>
+        </div>
+        <div class="topbar-actions">
+          <button id="copyLastBtn" class="icon-btn" title="Copy last answer">Copy</button>
+        </div>
+      </header>
+
+      <section id="messages" class="messages" aria-live="polite">
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">✦</div>
+          <h1>How can I help?</h1>
+          <p>Ask a question, brainstorm an idea, write code, or analyze a problem.</p>
+          <div class="suggestions">
+            <button data-prompt="Explain how APIs work in simple terms">Explain APIs</button>
+            <button data-prompt="Help me build a clean JavaScript project structure">Build a project</button>
+            <button data-prompt="Give me 5 creative startup ideas">Brainstorm ideas</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="composer-wrap">
+        <form id="composer" class="composer">
+          <textarea id="input" rows="1" placeholder="Message the AI…" autocomplete="off"></textarea>
+          <div class="composer-bottom">
+            <span class="hint">Enter to send · Shift+Enter for new line</span>
+            <button id="sendBtn" class="send-btn" type="submit">Send ↑</button>
+          </div>
+        </form>
+        <div class="footer">
+          AI responses can be inaccurate. Powered by
+          <a href="https://developer.puter.com" target="_blank" rel="noopener noreferrer">Puter</a>.
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://js.puter.com/v2/"></script>
+  <script src="app.js"></script>
+</body>
+</html>
